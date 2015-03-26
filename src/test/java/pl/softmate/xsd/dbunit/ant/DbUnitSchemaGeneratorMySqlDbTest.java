@@ -14,9 +14,9 @@ public class DbUnitSchemaGeneratorMySqlDbTest {
 
         DriverManager.deregisterDriver( new org.mariadb.jdbc.Driver() );
         generator.setDriverName( "com.mysql.jdbc.Driver" );
-        generator.setUrl( "jdbc:mysql://localhost:3306/c4c_tt" );
-        generator.setUser( "c4c" );
-        generator.setPassword( "ro21ot11" );
+        generator.setUrl( "jdbc:mariadb://localhost:3306/dbname" );
+        generator.setUser( "user" );
+        generator.setPassword( "pass" );
         generator.setSchemaName( "public" );
         generator.setOutputFolder( System.getProperty( "java.io.tmpdir" ) );
 
