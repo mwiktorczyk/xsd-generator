@@ -3,6 +3,7 @@ Xsd-generator for use with DbUnit
 
 To be used from within Ant
 
+```xml
 <project>
   <taskdef name="dbUnitSchemaGenerator" classname="pl.softmate.xsd.dbunit.ant.DbUnitSchemaGenerator" classpathref="common.classpath" />
 
@@ -10,3 +11,4 @@ To be used from within Ant
       <dbUnitSchemaGenerator driverName="${database.driver}" url="${database.url}" user="${database.user}" password="${database.password}" schemaName="public" outputFolder="${dbunit}/data" />
   </target>
 </project>
+```
