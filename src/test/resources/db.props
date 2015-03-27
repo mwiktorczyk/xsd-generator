@@ -1,0 +1,3 @@
+db=${xsd.dbname}
+user=${xsd.user}
+pass=${xsd.pass}

@@ -13,9 +13,16 @@
 		<mariadb.jdbc.version>1.1.8</mariadb.jdbc.version>
 		<mysql.jdbc.version>5.1.34</mysql.jdbc.version>
 		<junit.version>4.12</junit.version>
+		<hibernate.version>4.3.8.Final</hibernate.version>
 	</properties>
 
 	<build>
+		<testResources>
+			<testResource>
+				<filtering>true</filtering>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -38,6 +45,12 @@
 			<artifactId>ant</artifactId>
 			<version>1.9.4</version>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
