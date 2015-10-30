@@ -3,6 +3,7 @@ package pl.softmate.xsd.dbunit.ant;
 import static org.junit.Assert.assertTrue;
 
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
@@ -24,6 +25,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import org.junit.After;
+
 public abstract class BaseHibernatePoweredTest {
 
     public DbUnitSchemaGenerator generator;
@@ -31,7 +34,7 @@ public abstract class BaseHibernatePoweredTest {
     public Path updateSchemaFilePath = Paths.get( System.getProperty( "java.io.tmpdir" ), "updateSchema.xsd" );
     public DocumentBuilder builder;
     public XPath xpath;
-    final String sampletableXpath = "//*[local-name()='element' and @name='sampletable']";
+    final String sampletableXpath = "//*[local-name()='element' and translate(@name,'ABELMPST', 'abelmpst')='sampletable']";
 
     public BaseHibernatePoweredTest() {
         super();
@@ -89,7 +92,7 @@ public abstract class BaseHibernatePoweredTest {
         XPathExpression c1 = xpath.compile( _xpath );
         Object result = c1.evaluate( doc, XPathConstants.NODESET );
         NodeList nodes = (NodeList) result;
-        Assert.assertEquals( 1, nodes.getLength() );
+        Assert.assertEquals( "XPath :: " + _xpath, 1, nodes.getLength() );
     }
 
     public void checkBaseAssertions() throws SAXException, IOException, Exception {
@@ -106,6 +109,12 @@ public abstract class BaseHibernatePoweredTest {
         assertXPath( updateSchemaDoc, sampletableXpath + "//*" + getAttr( "c2", "xs:int", "optional" ) );
         assertXPath( updateSchemaDoc, sampletableXpath + "//*" + getAttr( "c3", "varchar_100", "optional" ) );
         assertXPath( updateSchemaDoc, sampletableXpath + "//*" + getAttr( "c4", "decimal_5_2", "optional" ) );
+    }
+
+    @After
+    public void tearDown() throws IOException {
+        Files.deleteIfExists(schemaFilePath);
+        Files.deleteIfExists(updateSchemaFilePath);
     }
 
 }

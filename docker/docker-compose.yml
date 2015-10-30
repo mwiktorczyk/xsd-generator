@@ -1,0 +1,29 @@
+mysql:
+  image: mysql:latest
+  environment:
+   - MYSQL_ROOT_PASSWORD=mysecretpassword
+   - MYSQL_DATABASE=dbunit
+   - MYSQL_USER=dbuser
+   - MYSQL_PASSWORD=dbpass
+   - MYSQL_ALLOW_EMPTY_PASSWORD=no
+  ports:
+    - "3306:3306"
+mariadb:
+  image: mariadb:latest
+  environment:
+   - MYSQL_ROOT_PASSWORD=mysecretpassword
+   - MYSQL_DATABASE=dbunit
+   - MYSQL_USER=dbuser
+   - MYSQL_PASSWORD=dbpass
+   - MYSQL_ALLOW_EMPTY_PASSWORD=no
+  ports:
+    - "3307:3306"
+postgres:
+  build: postgres
+  environment:
+   - POSTGRES_PASSWORD=mysecretpassword
+   - POSTGRES_CUSTOM_DATABASE=dbunit
+   - POSTGRES_CUSTOM_USER=dbuser
+   - POSTGRES_CUSTOM_PASSWORD=dbpass
+  ports:
+    - "5432:5432"
