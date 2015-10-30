@@ -1,0 +1,57 @@
+{
+    "compile": {
+        "org.apache.ant:ant": {
+            "locked": "1.9.6"
+        }
+    },
+    "default": {
+        "org.apache.ant:ant": {
+            "locked": "1.9.6"
+        }
+    },
+    "runtime": {
+        "org.apache.ant:ant": {
+            "locked": "1.9.6"
+        }
+    },
+    "testCompile": {
+        "junit:junit": {
+            "locked": "4.12"
+        },
+        "mysql:mysql-connector-java": {
+            "locked": "5.1.37"
+        },
+        "org.apache.ant:ant": {
+            "locked": "1.9.6"
+        },
+        "org.hibernate:hibernate-core": {
+            "locked": "5.0.3.Final"
+        },
+        "org.mariadb.jdbc:mariadb-java-client": {
+            "locked": "1.2.3"
+        },
+        "org.postgresql:postgresql": {
+            "locked": "9.4-1204-jdbc42"
+        }
+    },
+    "testRuntime": {
+        "junit:junit": {
+            "locked": "4.12"
+        },
+        "mysql:mysql-connector-java": {
+            "locked": "5.1.37"
+        },
+        "org.apache.ant:ant": {
+            "locked": "1.9.6"
+        },
+        "org.hibernate:hibernate-core": {
+            "locked": "5.0.3.Final"
+        },
+        "org.mariadb.jdbc:mariadb-java-client": {
+            "locked": "1.2.3"
+        },
+        "org.postgresql:postgresql": {
+            "locked": "9.4-1204-jdbc42"
+        }
+    }
+}
