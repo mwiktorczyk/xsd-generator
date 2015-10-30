@@ -1,9 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>pl.softmate.dbunit</groupId>
 	<artifactId>xsd-generator</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5-SNAPSHOT</version>
 
 	<properties>
 		<java.compiler.version>1.8</java.compiler.version>
@@ -16,6 +15,21 @@
 		<hibernate.version>5.0.3.Final</hibernate.version>
 	</properties>
 
+	<licenses>
+	  <license>
+	    <name>MIT License</name>
+	    <url>http://opensource.org/licenses/MIT</url>
+	    <distribution>repo</distribution>
+	  </license>
+	</licenses>
+
+	<scm>
+	  <connection>scm:git:https://github.com/mwiktorczyk/xsd-generator.git</connection>
+	  <developerConnection>scm:git:git@github.com:mwiktorczyk/xsd-generator.git</developerConnection>
+	  <url>https://github.com/mwiktorczyk/xsd-generator</url>
+	  <tag>xsd-generator-0.0.4</tag>
+	</scm>
+
 	<build>
 		<testResources>
 			<testResource>
@@ -23,6 +37,16 @@
 				<directory>src/test/resources</directory>
 			</testResource>
 		</testResources>
+		<plugins>
+    	<plugin>
+	      <artifactId>maven-release-plugin</artifactId>
+	      <configuration>
+	        <useReleaseProfile>false</useReleaseProfile>
+	        <releaseProfiles>release</releaseProfiles>
+	        <autoVersionSubmodules>true</autoVersionSubmodules>
+	      </configuration>
+	    </plugin>
+	  </plugins>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -77,4 +101,43 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<distributionManagement>
+	  <repository>
+	    <id>bintray</id>
+	    <url>https://api.bintray.com/maven/mariusz/maven/xsd-generator</url>
+	  </repository>
+	</distributionManagement>
+
+	<profiles>
+	  <profile>
+	    <id>release</id>
+	    <build>
+	      <plugins>
+	        <plugin>
+	          <artifactId>maven-source-plugin</artifactId>
+	          <executions>
+	            <execution>
+	              <id>attach-sources</id>
+	              <goals>
+	                <goal>jar</goal>
+	              </goals>
+	            </execution>
+	          </executions>
+	        </plugin>
+	        <plugin>
+	          <artifactId>maven-javadoc-plugin</artifactId>
+	          <executions>
+	            <execution>
+	              <id>attach-javadocs</id>
+	              <goals>
+	                <goal>jar</goal>
+	              </goals>
+	            </execution>
+	          </executions>
+	        </plugin>
+	      </plugins>
+	    </build>
+	  </profile>
+	</profiles>
 </project>
