@@ -92,3 +92,17 @@ tasks.each { t ->
   }
 }
 
+task dockerUp(type:Exec) {
+    description = 'Starts Docker container used for testing'
+    group = 'Docker'
+    workingDir "${project.rootDir}/docker"
+    commandLine 'docker-compose', 'up', '-d'
+}
+
+task dockerStop(type:Exec) {
+    description = 'Stops Docker container used for testing'
+    group = 'Docker'
+    workingDir "${project.rootDir}/docker"
+    commandLine 'docker-compose', 'stop'
+}
+
